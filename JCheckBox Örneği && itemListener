@@ -1,0 +1,54 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.*;
+
+public class JavaApplication17 {
+
+    //Text field
+    public static void main(String[] args) {
+
+        //JCheckBox örneği
+        //obj.setBounds(x, y, width, height)
+        JFrame f = new JFrame("CheckBox Örneği");
+        JLabel lb = new JLabel("Seçim Yapın!");
+        lb.setBounds(100, 50, 300,50);
+        JCheckBox ch1 = new JCheckBox("C++");
+        JCheckBox ch2 = new JCheckBox("JAVA");
+        ch1.setBounds(100, 100, 250, 50);
+        ch2.setBounds(100, 150, 250, 50);
+
+        ch1.addItemListener(new ItemListener(){
+            
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                lb.setText("C++ Seçim Kutusu " + (e.getStateChange() == 1 ? "seçildi" : "seçilmedi"));
+            }
+            
+        });
+        
+        ch2.addItemListener(new ItemListener(){
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                
+                lb.setText("JAVA Seçim Kutusu " + (e.getStateChange() == 1 ? "seçildi" : "seçilmedi"));
+                
+            }
+            
+            
+            
+        });
+        
+
+        f.add(lb);
+        f.add(ch2);
+        f.add(ch1);
+        f.setLayout(null);
+        f.setSize(400, 400);
+        f.setVisible(true);
+
+    }
+
+}
