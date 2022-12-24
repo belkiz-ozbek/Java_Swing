@@ -1,0 +1,52 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.*;
+
+public class JavaApplication17 {
+
+    //Text field
+    public static void main(String[] args) {
+
+        //JRadioButton Örneği
+        //obj.setBounds(x, y, width, height)
+        JFrame f = new JFrame("RadioButton Örneği");
+        JRadioButton r1 = new JRadioButton("Kadın", true);
+        r1.setActionCommand("k");
+        r1.setBounds(100, 50, 100, 30);
+        JRadioButton r2 = new JRadioButton("Erkek");
+        r2.setBounds(100, 100, 100, 30);
+        r2.setActionCommand("e");
+        JRadioButton r3 = new JRadioButton("İstemiyorum");
+        r3.setBounds(100, 150, 150, 30);
+        r3.setActionCommand("n");
+
+        ButtonGroup bg = new ButtonGroup();     //grup oluşturarak 3 öğeden yanlıca bir tanesini seçiyoruz 
+        bg.add(r3);
+        bg.add(r2);
+        bg.add(r1);
+
+        JButton btn = new JButton("Gönder");
+        btn.setBounds(100, 200, 100, 30);
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(bg.getSelection().getActionCommand() + " seçildi");
+
+            }
+
+        });
+
+        f.add(btn);
+        f.add(r3);
+        f.add(r2);
+        f.add(r1);
+        f.setSize(400, 400);
+        f.setLayout(null);
+        f.setVisible(true);
+
+    }
+
+}
