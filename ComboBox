@@ -1,0 +1,44 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.*;
+
+public class JavaApplication17 {
+
+    //Text field
+    public static void main(String[] args) {
+
+        //JComboBox
+        //obj.setBounds(x, y, width, height)
+        JFrame f = new JFrame("JComboBox Örneği");
+        String arr[] = {"C", "C#", "C++", "JAVA", "Python"};
+        JComboBox cb = new JComboBox(arr);
+        cb.setBounds(50, 100, 90, 20);
+
+        JButton btn = new JButton("Enter");
+        btn.setBounds(50, 150, 80, 20);
+
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String text = "Seçilen programlama dili " + cb.getSelectedItem();
+                //String text = "Seçilen programlama dili " + cb.getItemAt(cb.getSlectedIndex());
+                //index'e göre ^^
+                System.out.println(text);
+
+            }
+
+        });
+
+        f.add(btn);
+        f.add(cb);
+        f.setSize(400, 400);
+        f.setLayout(null);
+        f.setVisible(true);
+
+    }
+
+}
