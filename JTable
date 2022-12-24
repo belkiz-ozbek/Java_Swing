@@ -1,0 +1,32 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.*;
+
+public class JavaApplication17 {
+
+    //Text field
+    public static void main(String[] args) {
+
+        //JTable
+        //obj.setBounds(x,y,width, height);
+        
+        JFrame f = new JFrame("Table Örneği");
+        String[][] veri = {{"1", "Mat", "85"}, {"2", "Fen", "50"}, {"3", "Tur", "100"}};
+        String[] baslik = {"ID", "DERS", "NOT"};
+        
+        JTable jt = new JTable(veri, baslik);
+        jt.setBounds(30, 40, 200, 300);
+        
+        //Kodu çalıştırdığımızda başlıklar gözükmüyor, o yüzden JScrollPane kullanacaz
+        JScrollPane sp = new JScrollPane(jt);
+        
+        f.add(sp);
+        f.setSize(400, 400);
+        f.setVisible(true);
+
+    }
+
+}
