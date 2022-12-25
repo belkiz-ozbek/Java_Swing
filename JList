@@ -1,0 +1,73 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.*;
+
+public class JavaApplication17 {
+
+    //Text field
+    public static void main(String[] args) {
+
+        //JList
+        //obj.setBounds(x, y, width, height);
+        JFrame f = new JFrame("List örneği");
+
+        DefaultListModel<String> l = new DefaultListModel<>();
+        l.addElement("C++");
+        l.addElement("JAVA");
+        l.addElement("C#");
+        l.addElement("PHP");
+
+        JList<String> list = new JList<>(l);
+        list.setBounds(100, 100, 75, 75);
+
+        //Array Listinden yalnızca bir tanesini seçmemize izin verir.
+        list.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+
+        DefaultListModel<String> l2 = new DefaultListModel<>();
+        l2.addElement("Swing");
+        l2.addElement("Laravel");
+        l2.addElement("VuJes");
+        l2.addElement("Bootstrap");
+
+        JList<String> list2 = new JList<>(l2);
+        list2.setBounds(100, 200, 75, 85);
+
+        JButton btn = new JButton("Gönder");
+        btn.setBounds(200, 177, 80, 30);
+
+        btn.addActionListener(new ActionListener() {
+
+            String txt = "";
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+
+                if (list.getSelectedIndex() != -1) {
+                    txt = "Seçilen programlama dili: " + list.getSelectedValue();
+                }
+                if (list2.getSelectedIndex() != -1) {
+                    txt += ", Seçilen Framework: ";
+                    for (Object item : list2.getSelectedValuesList()) {
+                        txt += item + " ";
+                    }
+                }
+
+                System.out.print(txt);
+
+            }
+
+        });
+
+        f.add(btn);
+        f.add(list2);
+        f.add(list);
+        f.setSize(400, 400);
+        f.setLayout(null);
+        f.setVisible(true);
+
+    }
+
+}
